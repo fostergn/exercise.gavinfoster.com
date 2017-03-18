@@ -1,22 +1,26 @@
 const data = [
     {
         "id": 1,
-        "name": "Jerry Walters",
+        "firstName": "Jerry",
+        "lastName": "Walters",
         "email": "jerrywalters@gmail.com"
     },
     {
         "id": 2,
-        "name": "Gavin Foster",
+        "firstName": "Gavin",
+        "lastName": "Foster",
         "email": "gavinfoster@gmail.com"
     },
     {
         "id": 3,
-        "name": "Emily Plemmons",
+        "firstName": "Emily",
+        "lastName": "Plemmons",
         "email": "emilyplemmons@gmail.com"
     },
     {
         "id": 4,
-        "name": "Kyle Marlowe",
+        "firstName": "Kyle",
+        "lastName": " Marlowe",
         "email": "kylemarlowe@gmail.com"
     },
 ]
