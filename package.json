@@ -1,0 +1,24 @@
+{
+  "name": "contact-manager",
+  "version": "1.0.0",
+  "description": "a simple contact app code exercise",
+  "main": "insert.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerrywalters/contact-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jerrywalters/contact-manager/issues"
+  },
+  "homepage": "https://github.com/jerrywalters/contact-manager#readme",
+  "dependencies": {
+    "async": "^2.1.5",
+    "cassandra-driver": "^3.2.0",
+    "express": "^4.15.2"
+  }
+}
