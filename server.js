@@ -1,4 +1,13 @@
-'use strict';
+'use strict'
+
+// cassandra shit
+var cassandra = require('cassandra-driver');
+
+var Uuid = cassandra.types.Uuid;
+
+//Connect to cluster
+var client = new cassandra.Client({contactPoints: ['127.0.0.1:9042'], keyspace: 'test'});
+
 
 const contacts = require('./data.js');
 
@@ -24,14 +33,25 @@ app.get('/api/contacts', (req, res) => {
 app.post('/api/contacts', (req, res) => {
 
   const contact = {
-    id: contacts.length + 1,
+    id: Uuid.random(),
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email
   }
 
-  contacts.push(contact);
-  res.json(contact);
+  const values = `${contact.id}, ${contact.firstName}, ${contact.lastName}, ${contact.email}`;
+  const insertContactStatement = `INSERT 
+    INTO test.users 
+      (id, firstName, lastName, email) 
+    VALUES (${values})`;
+    
+  client.execute(insertContactStatement, (err, result) => {
+    if(!err) {
+        res.json(result);
+    } else { 
+        res.json(err);
+    }
+  })
 })
 
 app.put('/api/contacts/:id', (req,res) => {
