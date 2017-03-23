@@ -3,12 +3,11 @@ import '../../styles/styles.scss';
 import Header from '../Header/HeaderContainer';
 import Footer from '../Footer/FooterContainer';
 
-const App = ({children}) => {
+const App = ({children, location}) => {
   return (
     <div>
-      <Header />
+      <Header location={location} />
       {children}
-      {/*<Footer />*/}
     </div>
   );
 }
