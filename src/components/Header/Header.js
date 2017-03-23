@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import AppBar from 'material-ui/AppBar';
 
 const Header = ({ toggleSetting }) =>  {
 
@@ -14,13 +15,12 @@ const Header = ({ toggleSetting }) =>  {
   }
 
   return (
-    <div className="header">
-      <div className="header__nav">
-          <ul className={navClass}>
-            <li>Gavin Foster</li>
-          </ul>
-      </div>
-  </div>
+    <AppBar 
+      iconElementRight={<i className="material-icons">search</i>}
+      iconStyleRight={{color:'#fff', margin:0, display: 'flex', alignItems: 'center'}} 
+      onRightIconButtonTouchTap={() => console.log('tapped')}
+      title='Contacts'
+    />
   );
 }
 
