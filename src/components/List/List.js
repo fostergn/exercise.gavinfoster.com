@@ -19,7 +19,7 @@ const ContactList = () => {
 
   return (
     <div>
-      <List>
+      <List style={{paddingTop: 64}}>
         <ListItem
           onTouchTap={() => singleNavigate('chelsea o')}
           primaryText="Chelsea Otakan"

@@ -20,6 +20,7 @@ const Header = ({ toggleSetting }) =>  {
       iconStyleRight={{color:'#fff', margin:0, display: 'flex', alignItems: 'center'}} 
       onRightIconButtonTouchTap={() => console.log('tapped')}
       title='Contacts'
+      style={{position:'fixed'}}
     />
   );
 }
