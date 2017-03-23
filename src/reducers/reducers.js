@@ -1,14 +1,18 @@
-import { TOGGLE__BUTTON } from '../actions/testAction'
+import {
+    TOGGLE_VIEW,
+} from '../actions/actions';
 
-function reducer(state, action) {
-  switch (action.type) {
-    case TOGGLE__BUTTON:
-      return Object.assign({}, state, {
-         button: !state.button
-       })
-   default:
-    return state;
-  }
-}
+const rootReducer = (state = {}, action) => {
+    let previousView = '';
+    switch (action.type) {
+        case TOGGLE_VIEW:
+            return Object.assign({}, state, {
+                view: !state.view,
+            });
+        default:
+            return state;
+    }
+};
 
-export default reducer;
+// Export Reducer
+export default rootReducer;

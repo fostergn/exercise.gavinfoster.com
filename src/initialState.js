@@ -1,5 +1,5 @@
 const initialState = {
-  button: false
-}
+  view: '',
+};
 
-export default initialState
+export default initialState;
