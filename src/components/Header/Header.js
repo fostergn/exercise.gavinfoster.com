@@ -4,22 +4,22 @@ import AppBar from 'material-ui/AppBar';
 import { browserHistory } from 'react-router';
 import TextField from 'material-ui/TextField';
 
-const Header = ({ toggleSetting, location }) =>  {
+const Header = ({ toggleSearch, location, isSearching }) =>  {
 
-  const isSearching = false
   const isSingle = location.pathname.includes('/contacts/')
-  const title = isSingle ? 'Single' : (isSearching ? <TextField hintText="Search Contacts" /> : 'Contacts')
-  const leftIcon = isSingle ? <i className="material-icons">arrow_back</i> : (isSearching ? <i className="material-icons">arrow_back</i> : <i className="material-icons">more_vert</i>)
-  const rightIcon = isSearching ? '' : <i className="material-icons">search</i>
+  const isAdd = location.pathname.includes('/add')
 
-  const navClass = classNames({
-    'header__nav': true,
-    'header__nav--hidden': false
-  });
+  const arrowBackIcon = <i className="material-icons">arrow_back</i>
+  const moreVertIcon = <i className="material-icons">more_vert</i>
+  const textField = <TextField hintText="Search Contacts" inputStyle={{color:'#fff'}} />
+
+  const title = isSingle ? 'Single' : (isSearching ? textField : 'Contacts')
+  const leftIcon = (isSingle || isAdd)  ? arrowBackIcon : (isSearching ? arrowBackIcon : moreVertIcon)
+  const rightIcon = (isSearching || isSingle || isAdd) ? <div></div> : <i className="material-icons">search</i>
 
   const leftIconTouch = () => {
-    if(isSingle) { browserHistory.push('/contacts') }
-    else { console.log('nothing'); }
+    if(isSingle || isAdd) { browserHistory.push('/contacts') }
+    else { toggleSearch() }
   }
 
   return (
@@ -29,7 +29,7 @@ const Header = ({ toggleSetting, location }) =>  {
       onLeftIconButtonTouchTap={() => leftIconTouch()}
       iconStyleLeft={{color:'#fff', marginTop:0, marginLeft:0, marginBottom:0, marginRight:20, display: 'flex', alignItems: 'center'}} 
       iconStyleRight={{color:'#fff', margin:0, display: 'flex', alignItems: 'center'}} 
-      onRightIconButtonTouchTap={() => console.log('tapped')}
+      onRightIconButtonTouchTap={() => toggleSearch()}
       title={title}
       style={{position:'fixed'}}
     />

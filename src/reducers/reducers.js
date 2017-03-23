@@ -1,13 +1,13 @@
 import {
-    TOGGLE_VIEW,
+    TOGGLE_SEARCH,
 } from '../actions/actions';
 
 const rootReducer = (state = {}, action) => {
     let previousView = '';
     switch (action.type) {
-        case TOGGLE_VIEW:
+        case TOGGLE_SEARCH:
             return Object.assign({}, state, {
-                view: !state.view,
+                isSearching: !state.isSearching,
             });
         default:
             return state;

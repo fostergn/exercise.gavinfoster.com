@@ -19,27 +19,9 @@ const ContactList = () => {
 
   return (
     <div>
-      <List style={{paddingTop: 64}}>
-        <ListItem
-          onTouchTap={() => singleNavigate('chelsea o')}
-          primaryText="Chelsea Otakan"
-          leftIcon={<ActionGrade color={pinkA200} />}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341422?v=3&s=128" />}
-        />
-        <ListItem
-          primaryText="Eric Hoffman"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341441?v=3&s=128" />}
-        />
-        <ListItem
-          primaryText="Kerem Suer"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/4214491?v=3&s=128" />}
-        />
-      </List>
-      <Divider inset={true} />
       <List>
         <ListItem
+          onClick={() => singleNavigate('addele-charles') }
           primaryText="Adelle Charles"
           leftAvatar={
             <Avatar
@@ -81,10 +63,19 @@ const ContactList = () => {
           insetChildren={true}
           rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341441?v=3&s=128" />}
         />
+        <Divider inset={true} />
         <ListItem
           primaryText="Eric Hoffman"
           insetChildren={true}
           rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341441?v=3&s=128" />}
+           leftAvatar={
+            <Avatar
+              color={pinkA200} backgroundColor={transparent}
+              style={{left: 8}}
+            >
+              B
+            </Avatar>
+          }
         />
         <ListItem
           primaryText="Kerem Suer"

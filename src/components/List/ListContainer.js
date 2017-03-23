@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { toggleSearch } from '../../actions/actions';
-import Header from './Header';
+import List from './List';
 
 const mapStateToProps = (state) => {
   return {
-    isSearching: state.isSearching,
+    view: state.view,
   };
 };
 
@@ -16,9 +16,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const HeaderContainer = connect(
+const ListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(List);
 
-export default HeaderContainer;
+export default ListContainer;

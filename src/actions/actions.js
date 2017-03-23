@@ -1,12 +1,12 @@
 import fetch from 'isomorphic-fetch'
 
-export const TOGGLE_SETTING = 'TOGGLE_SETTING';
+export const TOGGLE_SEARCH = 'TOGGLE_SEARCH';
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 
-export function toggleSetting() {
+export function toggleSearch() {
     return {
-        type: TOGGLE_SETTING,
+        type: TOGGLE_SEARCH,
     }
 }
 

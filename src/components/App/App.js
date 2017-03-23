@@ -7,7 +7,9 @@ const App = ({children, location}) => {
   return (
     <div>
       <Header location={location} />
-      {children}
+      <div style={{paddingTop: 64}}>
+        {children}
+      </div>
     </div>
   );
 }

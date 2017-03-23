@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, browserHistory, IndexRedirect, Redirect } fr
 import { Provider } from 'react-redux';
 import Theme from './components/Theme/Theme';
 import Add from './components/Add/Add';
-import List from './components/List/List';
+import List from './components/List/ListContainer';
 import Single from './components/Single/Single';
 import { configureStore } from './store';
 import injectTapEventPlugin from 'react-tap-event-plugin';
