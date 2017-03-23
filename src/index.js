@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, IndexRedirect, Redirect } from 'react-router';
 import { Provider } from 'react-redux';
 import Theme from './components/Theme/Theme';
 import Add from './components/Add/Add';
@@ -21,11 +21,11 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Theme}>
-        <IndexRoute component={List}/>
+        <IndexRedirect to="contacts" />
         <Route path="/add" component={Add} />
         <Route path="/contacts" component={List} />
         <Route path="/contacts/:id" component={Single} />
-        <Route path="*" component={List} />>
+        <Redirect from="*" to="contacts" />
       </Route>
     </Router>
   </Provider>,
