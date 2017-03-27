@@ -1,13 +1,21 @@
 import fetch from 'isomorphic-fetch'
 
-export const TOGGLE_SEARCH = 'TOGGLE_SEARCH';
+export const TOGGLE_SEARCH = 'TOGGLE_SEARCH'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+export const UPDATE_SEARCH = 'UPDATE SEARCH'
 
 export function toggleSearch() {
     return {
         type: TOGGLE_SEARCH,
     }
+}
+
+export function updateSearch(text) {
+  return {
+    type: UPDATE_SEARCH,
+    text
+  }
 }
 
 function requestPosts(category) {

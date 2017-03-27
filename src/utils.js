@@ -2,7 +2,11 @@ export const alphabetizeArray = (contacts) => {
   const alphabetizedSubArrays = {};
 
   // sort alphabetically
-  const alphabeticalContacts =  contacts.sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase());
+  const alphabeticalContacts =  contacts.sort((a, b) => {
+    if (a.firstName.toLowerCase() < b.firstName.toLowerCase()){
+      return -1
+    } else { return 1 }
+  })
 
   // loop through contacts and create sub array for each letter in the alphabet
   for (let i = 0; i < alphabeticalContacts.length; i++){
@@ -17,4 +21,8 @@ export const alphabetizeArray = (contacts) => {
   }
   
   return alphabetizedSubArrays
+}
+
+export const intToPhone = (int) => {
+  return [int.slice(0, 0), '(', int.slice(0, 3), ') ', int.slice(3, 6), '-', int.slice(6)].join('');
 }

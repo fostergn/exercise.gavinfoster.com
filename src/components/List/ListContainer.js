@@ -4,7 +4,7 @@ import List from './List';
 
 const mapStateToProps = (state) => {
   return {
-    view: state.view,
+    searchText: state.searchText,
   };
 };
 

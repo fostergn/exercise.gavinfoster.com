@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import { toggleSearch } from '../../actions/actions';
+import { toggleSearch, updateSearch } from '../../actions/actions';
 import Header from './Header';
 
 const mapStateToProps = (state) => {
   return {
     isSearching: state.isSearching,
+    searchText: state.searchText
   };
 };
 
@@ -13,6 +14,9 @@ const mapDispatchToProps = (dispatch) => {
     toggleSearch: () => {
       dispatch(toggleSearch());
     },
+    updateSearch : (text) => {
+      dispatch(updateSearch(text));
+    }
   };
 };
 
