@@ -30,4 +30,11 @@ for (i = 0; i < alphabeticalContacts.length; i++){
 }
 
 console.log('alphabetized sub arrays : ', alphabetizedSubArrays);
+
+for (var key in alphabetizedSubArrays) {
+   if (alphabetizedSubArrays.hasOwnProperty(key)) {
+      console.log(key, alphabetizedSubArrays[key]);
+   }
+}
+
 </script>

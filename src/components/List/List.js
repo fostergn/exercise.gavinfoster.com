@@ -6,6 +6,9 @@ import ActionGrade from 'material-ui/svg-icons/action/grade';
 import Divider from 'material-ui/Divider';
 import Avatar from 'material-ui/Avatar';
 import {pinkA200, transparent} from 'material-ui/styles/colors';
+import contacts from '../../../test-contacts';
+import SubList from './SubList'
+import { alphabetizeArray } from '../../utils.js'
 
 const ContactList = () => {
 
@@ -17,82 +20,19 @@ const ContactList = () => {
     browserHistory.push(`/contacts/${id}`)
   }
 
+  const alphabetizedContacts = alphabetizeArray(contacts)
+  const alphabetizedList = []
+
+  let SubListElements = [];
+  for (var key in alphabetizedContacts) {
+    if (alphabetizedContacts.hasOwnProperty(key)) {
+      SubListElements.push(<SubList letter={key} contacts={alphabetizedContacts[key]} />)
+    }
+  }
+
   return (
     <div>
-      <List>
-        <ListItem
-          onClick={() => singleNavigate('addele-charles') }
-          primaryText="Adelle Charles"
-          leftAvatar={
-            <Avatar
-              color={pinkA200} backgroundColor={transparent}
-              style={{left: 8}}
-            >
-              A
-            </Avatar>
-          }
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/4223491?v=3&s=128" />}
-        />
-        <ListItem
-          primaryText="Eric Hoffman"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341441?v=3&s=128" />}
-        />
-        <ListItem
-          primaryText="Eric Hoffman"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341441?v=3&s=128" />}
-        />
-        <ListItem
-          primaryText="Kerem Suer"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/4214491?v=3&s=128" />}
-        />
-        <ListItem
-          primaryText="Eric Hoffman"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341441?v=3&s=128" />}
-        />
-        <ListItem
-          primaryText="Kerem Suer"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/4214491?v=3&s=128" />}
-        />
-        <ListItem
-          primaryText="Eric Hoffman"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341441?v=3&s=128" />}
-        />
-        <Divider inset={true} />
-        <ListItem
-          primaryText="Eric Hoffman"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341441?v=3&s=128" />}
-           leftAvatar={
-            <Avatar
-              color={pinkA200} backgroundColor={transparent}
-              style={{left: 8}}
-            >
-              B
-            </Avatar>
-          }
-        />
-        <ListItem
-          primaryText="Kerem Suer"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/4214491?v=3&s=128" />}
-        />
-        <ListItem
-          primaryText="Eric Hoffman"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341441?v=3&s=128" />}
-        />
-        <ListItem
-          primaryText="Eric Hoffman"
-          insetChildren={true}
-          rightAvatar={<Avatar src="https://avatars0.githubusercontent.com/u/5341441?v=3&s=128" />}
-        />
-      </List>
+      {SubListElements}
       <FloatingActionButton 
         children={<i className="material-icons">add</i>}
         style={{position:'fixed', bottom:'10px', right:'10px', zIndex: 10}}
