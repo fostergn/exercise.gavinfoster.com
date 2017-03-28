@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
 export const TOGGLE_SEARCH = 'TOGGLE_SEARCH'
+export const TOGGLE_EDIT = 'TOGGLE_EDIT'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const UPDATE_SEARCH = 'UPDATE SEARCH'
@@ -8,6 +9,12 @@ export const UPDATE_SEARCH = 'UPDATE SEARCH'
 export function toggleSearch() {
     return {
         type: TOGGLE_SEARCH,
+    }
+}
+
+export function toggleEdit() {
+    return {
+        type: TOGGLE_EDIT,
     }
 }
 

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import Theme from './components/Theme/Theme';
 import Add from './components/Add/Add';
 import List from './components/List/ListContainer';
-import Single from './components/Single/Single';
+import Single from './components/Single/SingleContainer';
 import { configureStore } from './store';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -22,8 +22,8 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={Theme}>
         <IndexRedirect to="contacts" />
-        <Route path="/add" component={Add} />
         <Route path="/contacts" component={List} />
+        <Route path="/add" component={Add} />
         <Route path="/contacts/:id" component={Single} />
         <Redirect from="*" to="contacts" />
       </Route>

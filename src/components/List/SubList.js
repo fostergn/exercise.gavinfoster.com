@@ -36,7 +36,7 @@ const SubList = ( { letter, contacts, index, searchText }) => {
         } else {
           return (
             <ListItem
-              primaryText={`${contact.firstName} ${contact.firstName}`}
+              primaryText={`${contact.firstName} ${contact.lastName}`}
               insetChildren={true}
               onTouchTap={() => singleNavigate(contact.id)}
             />

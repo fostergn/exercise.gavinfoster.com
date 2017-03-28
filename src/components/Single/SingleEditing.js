@@ -10,7 +10,9 @@ import CommunicationEmail from 'material-ui/svg-icons/communication/email'
 import TextField from 'material-ui/TextField'
 import { intToPhone } from '../../utils'
 
-const SingleAdd = ({params}) => {
+const Single = ({params}) => {
+  const singleId = params.id
+  const singleContact = contacts.find(contact => contact.id === parseInt(singleId))
 
   const saveEdits = () => {
     console.log('save edits');
@@ -23,13 +25,13 @@ const SingleAdd = ({params}) => {
           leftIcon={<FaceIcon color={indigo500}/>}
           secondaryText="First Name"
         >
-          <TextField id="first-name-input" hintText="First Name" />
+          <TextField id="first-name-input" hintText="First Name" defaultValue={singleContact.firstName} />
         </ListItem>
         <ListItem
           style={{paddingLeft:55}}
           secondaryText="Last Name"
         >
-          <TextField id="last-name-input" hintText="Last Name" />
+          <TextField id="last-name-input" hintText="Last Name" defaultValue={singleContact.lastName} />
         </ListItem>
       </List>
       <Divider inset={true} />
@@ -39,7 +41,7 @@ const SingleAdd = ({params}) => {
           rightIcon={<CommunicationChatBubble />}
           secondaryText="Primary"
         >
-          <TextField  id="phone-input" hintText="Primary Phone" />
+          <TextField  id="phone-input" hintText="Primary Phone" defaultValue={intToPhone(singleContact.phoneNumber)} />
         </ListItem>
       </List>
       <Divider inset={true} />
@@ -48,11 +50,11 @@ const SingleAdd = ({params}) => {
           leftIcon={<CommunicationEmail color={indigo500} />}
           secondaryText="Work"
         >
-          <TextField  id="email-input" type="email" hintText="Primary Phone" />
+          <TextField  id="email-input" type="email" hintText="Primary Phone" defaultValue={singleContact.email} />
         </ListItem>
       </List>
     </div>
   )
 }
 
-export default SingleAdd;
+export default Single;
