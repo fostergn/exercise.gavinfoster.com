@@ -65,7 +65,9 @@ module.exports = function contactsRouter(database) {
     const deleteStatement = `DELETE FROM argo_exercise.contacts WHERE id = ${id};`
 
     database.execute(deleteStatement, (err, result) => {
-      if(!err) { res.json(result)} 
+      if(!err) { res.json(
+        { id }
+      )} 
       else { 
           res.json(err);
       }

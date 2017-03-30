@@ -13,6 +13,8 @@ export const GET_CONTACTS_REQUEST = 'GET_CONTACTS_REQUEST'
 export const RECEIVE_CONTACTS = 'RECEIVE_CONTACTS'
 export const UPDATE_CONTACT_REQUEST = 'UPDATE_CONTACT_REQUEST'
 export const RECEIVE_UPDATED_CONTACT = 'RECEIVE_UPDATED_CONTACT'
+export const RECEIVE_DELETE_CONTACT = 'RECEIVE_DELETE_CONTACT'
+export const DELETE_CONTACT_REQUEST = 'DELETE_CONTACT_REQUEST'
 
 const baseUrl = 'http://45.55.86.244'
 
@@ -132,7 +134,6 @@ export function receiveUpdatedContact(contact){
 
 export function updateContact(contact) {
   return function(dispatch) {
-    console.log('updating contact action: ', contact)
     dispatch(updateContactRequest())
     return fetch(`${baseUrl}/api/contacts/${contact.id}`, {
       method: 'PUT',
@@ -149,6 +150,40 @@ export function updateContact(contact) {
       .then(response => response.json())
       .then(json =>
         dispatch(receiveUpdatedContact(json))
+      )
+
+  }   
+}
+
+export function deleteContactRequest(){
+  return {
+    type: DELETE_CONTACT_REQUEST,
+  }
+}
+
+export function receiveDeleteContact(id){
+  return {
+    type: RECEIVE_DELETE_CONTACT,
+    id
+  }
+}
+
+export function receiveDeleteResponse(response){
+  browserHistory.push(`/contacts`)
+  return function(dispatch){
+    dispatch(receiveDeleteContact(response))
+  }
+}
+
+export function deleteContact(id) {
+  return function(dispatch) {
+    dispatch(deleteContactRequest())
+    return fetch(`${baseUrl}/api/contacts/${id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(json =>
+        dispatch(receiveDeleteResponse(json.id))
       )
 
   }   

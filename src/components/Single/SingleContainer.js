@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleSearch, toggleEdit, updateSearch, fetchContacts } from '../../actions/actions';
+import { toggleSearch, toggleEdit, updateSearch, fetchContacts, deleteContact } from '../../actions/actions';
 import SingleWrapper from './SingleWrapper';
 
 const mapStateToProps = (state) => {
@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     fetchContacts: () => {
       dispatch(fetchContacts());
+    },
+    deleteContact: (id) => {
+      dispatch(deleteContact(id));
     },
   };
 };

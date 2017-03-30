@@ -10,8 +10,8 @@ run cassandra, create keyspace, and create test user
 `npm run build && rsync -av build/ gavin@45.55.67.227:/var/www/exercise.gavinfoster.com/html`
 
 ### Deployment (Server)
-`rsync -av node_modules gavin@45.55.67.227:/var/www/exercise.gavinfoster.com/html`
-`rsync -av server gavin@45.55.67.227:/var/www/exercise.gavinfoster.com/html`
+`rsync -av node_modules root@45.55.86.244:/var/www/html`
+`rsync -av server root@45.55.86.244:/var/www/html`
 
 `rsync -av server/ root@45.55.86.244:/var/www/html`
 `npm run build && rsync -av build/ root@45.55.86.244:/var/www/html`

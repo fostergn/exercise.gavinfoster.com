@@ -6,7 +6,8 @@ import {
     RECEIVE_ADD_RESPONSE,
     GET_CONTACTS_REQUEST,
     RECEIVE_CONTACTS,
-    RECEIVE_UPDATED_CONTACT
+    RECEIVE_UPDATED_CONTACT,
+    RECEIVE_DELETE_CONTACT
 } from '../actions/actions';
 
 const rootReducer = (state = {}, action) => {
@@ -54,6 +55,10 @@ const rootReducer = (state = {}, action) => {
                     action.contact,
                     ...state.contacts.slice(index + 1)
                 ]
+            }); 
+        case RECEIVE_DELETE_CONTACT:
+            return Object.assign({}, state, {
+                contacts: state.contacts.filter(contact => contact.id !== action.id)
             });  
         default:
             return state;

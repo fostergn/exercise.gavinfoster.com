@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import contacts from '../../../test-contacts'
 import SingleEditing from './SingleEditing'
 import Single from './Single'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+
 
 class SingleWrapper extends Component {
   constructor(props){
@@ -14,10 +16,22 @@ class SingleWrapper extends Component {
     }
   }
   render(){
-    const {params, isEditing, toggleEdit, contacts, contactsFetched} = this.props
+    const {params, isEditing, toggleEdit, contacts, contactsFetched, deleteContact} = this.props
+
+    const handleDelete = () => {
+      deleteContact(params.id)
+    }
    
     return (
-        !contactsFetched ? <div>loading contacts</div> : (isEditing ? <SingleEditing params={params} contacts={contacts} /> : <Single toggleEdit={toggleEdit} params={params} contacts={contacts}/>) 
+      <div>
+        {!contactsFetched ? <div>loading contacts</div> : (isEditing ? <SingleEditing params={params} contacts={contacts} /> : <Single toggleEdit={toggleEdit} params={params} contacts={contacts}/>) }
+        <FloatingActionButton 
+          secondary={true}
+          children={<i className="material-icons">delete</i>}
+          style={{position:'fixed', bottom:'10px', right:'10px', zIndex: 10}}
+          onTouchTap={() => handleDelete()}
+        />      
+      </div>
     )
   }
 }
