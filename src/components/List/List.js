@@ -25,15 +25,25 @@ const ContactList = ({searchText, contacts}) => {
 
   let SubListElements = [];
 
-  // if(!Object.values(alphabetizedContacts).every(contacts => contacts.every(contact => `${contact.firstName} ${contact.lastName}`.toLowerCase().includes(searchText.toLowerCase())))){
-  //   SubListElements = <p className="list__empty">Sorry, no contacts. You should add one</p>
-  // } else {
-    for (var key in alphabetizedContacts) {
-      if (alphabetizedContacts.hasOwnProperty(key)) {
-        SubListElements.push(<SubList key={key} letter={key} contacts={alphabetizedContacts[key]} searchText={searchText} />)
-      }
+  // compare search term to all contacts first and last name
+  const inSearchArray = Object.values(alphabetizedContacts).map(contacts => contacts.map(contact => `${contact.firstName} ${contact.lastName}`.toLowerCase().includes(searchText.toLowerCase())))
+  // flatten array
+  const flatSearchArray = [].concat.apply([], inSearchArray)
+  const isSearchEmpty = flatSearchArray.every(contact => contact === false)
+
+  if (isSearchEmpty) {
+    return <ListItem
+              primaryText='Sorry, there are no contacts that match your search.'
+              insetChildren={true}
+            />
+  }
+
+  for (var key in alphabetizedContacts) {
+    if (alphabetizedContacts.hasOwnProperty(key)) {
+      SubListElements.push(<SubList key={key} letter={key} contacts={alphabetizedContacts[key]} searchText={searchText} />)
     }
-  // }
+  }
+
   return (
     <div>
       {SubListElements}
