@@ -6,6 +6,7 @@ import {
     RECEIVE_ADD_RESPONSE,
     GET_CONTACTS_REQUEST,
     RECEIVE_CONTACTS,
+    RECEIVE_UPDATED_CONTACT
 } from '../actions/actions';
 
 const rootReducer = (state = {}, action) => {
@@ -42,6 +43,19 @@ const rootReducer = (state = {}, action) => {
                 contactsIsFetching: false,
                 contacts: action.contacts,
             }); 
+        case RECEIVE_UPDATED_CONTACT:
+            const { id } = action.contact
+            const index = state.contacts.findIndex(contact => contact.id === id)
+            console.log('id : ', id)
+            console.log('index: ', index)
+            return Object.assign({}, state, {
+                updatingContact: false,
+                contacts: [
+                    ...state.contacts.slice(0, index),
+                    action.contact,
+                    ...state.contacts.slice(index + 1)
+                ]
+            });  
         default:
             return state;
     }

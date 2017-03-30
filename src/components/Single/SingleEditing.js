@@ -1,5 +1,5 @@
 import React from 'react'
-import contacts from '../../../test-contacts'
+// import contacts from '../../../test-contacts'
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import CommunicationCall from 'material-ui/svg-icons/communication/call'
@@ -10,13 +10,9 @@ import CommunicationEmail from 'material-ui/svg-icons/communication/email'
 import TextField from 'material-ui/TextField'
 import { intToPhone } from '../../utils'
 
-const Single = ({params}) => {
+const Single = ({params, contacts}) => {
   const singleId = params.id
-  const singleContact = contacts.find(contact => contact.id === parseInt(singleId))
-
-  const saveEdits = () => {
-    console.log('save edits');
-  }
+  const singleContact = contacts.find(contact => contact.id === singleId)
 
   return (
     <div>

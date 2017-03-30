@@ -6,6 +6,7 @@ const initialState = {
   contactsFetched: false,
   contactsIsFetching: false,
   addingContact: false,
+  updatingContact: false,
   contacts: [],
 };
 

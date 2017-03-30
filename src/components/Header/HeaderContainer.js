@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleSearch, toggleEdit, updateSearch, addContact } from '../../actions/actions';
+import { toggleSearch, updateContact, toggleEdit, updateSearch, addContact } from '../../actions/actions';
 import Header from './Header';
 
 const mapStateToProps = (state) => {
@@ -24,7 +24,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     addContact : (contact) => {
       dispatch(addContact(contact));
-    }
+    },
+    updateContact : (contact) => {
+      dispatch(updateContact(contact));
+    },
   };
 };
 

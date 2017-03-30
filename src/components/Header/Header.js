@@ -6,7 +6,7 @@ import TextField from 'material-ui/TextField'
 // import contacts from '../../../test-contacts'
 import RightIcon from './RightIcon'
 
-const Header = ({ contacts, toggleSearch, location, isSearching, updateSearch, searchText, isEditing, toggleEdit, addContact }) =>  {
+const Header = ({ contacts, toggleSearch, location, isSearching, updateSearch, searchText, isEditing, toggleEdit, addContact, updateContact }) =>  {
 
   const isSingle = location.pathname.includes('/contacts/')
   const isAdd = location.pathname.includes('/add')
@@ -26,7 +26,17 @@ const Header = ({ contacts, toggleSearch, location, isSearching, updateSearch, s
   const rightIcon = (isSearching || isAdd) ? hiddenIcon : isSingle ? (isEditing ? cancelAndSave : pencilIcon) : searchIcon
 
   const saveEdits = () => {
-    console.log('save edits')
+    console.log('saving edit')
+
+    const contact = {
+      id: singleId,
+      firstName: document.getElementById('first-name-input').value,
+      lastName: document.getElementById('last-name-input').value,
+      // only numbers for phone (strip formatting)
+      phone: document.getElementById('phone-input').value.replace(/\D/g,''),
+      email: document.getElementById('email-input').value,
+    }
+    updateContact(contact)
   }
 
   const leftIconTouch = () => {

@@ -36,6 +36,7 @@ module.exports = function contactsRouter(database) {
 
   // update existing contact
   router.put('/:id', (req,res) => {
+    console.log('put request: ', req.body)
     const { firstName, lastName, email, phone } = req.body
     const id = req.params.id
     const insertStatementValues = `${id}, '${firstName}', '${lastName}', '${email}', '${phone}'`;
@@ -49,7 +50,9 @@ module.exports = function contactsRouter(database) {
         WHERE id = ${id};`
 
     database.execute(updateStatement, (err, result) => {
-      if(!err) { res.json(result)} 
+      if(!err) { res.json(
+        { id, firstName, lastName, email, phone }
+      )} 
       else { 
           res.json(err);
       }

@@ -17,7 +17,7 @@ class SingleWrapper extends Component {
     const {params, isEditing, toggleEdit, contacts, contactsFetched} = this.props
    
     return (
-        !contactsFetched ? <div>loading contacts</div> : (isEditing ? <SingleEditing params={params} /> : <Single toggleEdit={toggleEdit} params={params} contacts={contacts}/>) 
+        !contactsFetched ? <div>loading contacts</div> : (isEditing ? <SingleEditing params={params} contacts={contacts} /> : <Single toggleEdit={toggleEdit} params={params} contacts={contacts}/>) 
     )
   }
 }

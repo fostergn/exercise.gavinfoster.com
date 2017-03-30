@@ -12,12 +12,7 @@ import TextField from 'material-ui/TextField'
 
 const Single = ({params, toggleEdit, contacts}) => {
   const singleId = params.id
-
-  console.log('contacts: ', contacts)
-  console.log('single id: ', singleId)
   const singleContact = contacts.find(contact => contact.id === singleId)
-
-  console.log(' sing le contact: ', singleContact)
 
   return (
     <div>
