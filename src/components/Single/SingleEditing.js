@@ -21,13 +21,13 @@ const Single = ({params, contacts}) => {
           leftIcon={<FaceIcon color={indigo500}/>}
           secondaryText="First Name"
         >
-          <TextField id="first-name-input" hintText="First Name" defaultValue={singleContact.firstName} />
+          <TextField tabIndex={10} id="first-name-input" hintText="First Name" defaultValue={singleContact.firstName} />
         </ListItem>
         <ListItem
           style={{paddingLeft:55}}
           secondaryText="Last Name"
         >
-          <TextField id="last-name-input" hintText="Last Name" defaultValue={singleContact.lastName} />
+          <TextField tabIndex={20} id="last-name-input" hintText="Last Name" defaultValue={singleContact.lastName} />
         </ListItem>
       </List>
       <Divider inset={true} />
@@ -37,7 +37,7 @@ const Single = ({params, contacts}) => {
           rightIcon={<CommunicationChatBubble />}
           secondaryText="Primary"
         >
-          <TextField  id="phone-input" hintText="Primary Phone" defaultValue={intToPhone(singleContact.phone)} />
+          <TextField tabIndex={30} id="phone-input" hintText="Primary Phone" defaultValue={intToPhone(singleContact.phone)} />
         </ListItem>
       </List>
       <Divider inset={true} />
@@ -46,7 +46,7 @@ const Single = ({params, contacts}) => {
           leftIcon={<CommunicationEmail color={indigo500} />}
           secondaryText="Work"
         >
-          <TextField  id="email-input" type="email" hintText="Primary Phone" defaultValue={singleContact.email} />
+          <TextField tabIndex={40} id="email-input" type="email" hintText="Primary Phone" defaultValue={singleContact.email} />
         </ListItem>
       </List>
     </div>

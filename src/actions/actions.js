@@ -1,7 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import { browserHistory } from 'react-router'
 
-
 export const TOGGLE_SEARCH = 'TOGGLE_SEARCH'
 export const TOGGLE_EDIT = 'TOGGLE_EDIT'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
@@ -14,6 +13,8 @@ export const GET_CONTACTS_REQUEST = 'GET_CONTACTS_REQUEST'
 export const RECEIVE_CONTACTS = 'RECEIVE_CONTACTS'
 export const UPDATE_CONTACT_REQUEST = 'UPDATE_CONTACT_REQUEST'
 export const RECEIVE_UPDATED_CONTACT = 'RECEIVE_UPDATED_CONTACT'
+
+const baseUrl = 'http://45.55.86.244'
 
 export function toggleSearch() {
     return {
@@ -72,7 +73,7 @@ export function addContact(contact) {
   return function(dispatch) {
     dispatch(postAddRequest(contact))
 
-    return fetch(`http://localhost:7000/api/contacts/`, {
+    return fetch(`${baseUrl}/api/contacts/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -108,7 +109,7 @@ export function receiveContacts(contacts){
 export function fetchContacts() {
   return function(dispatch) {
     dispatch(getContactsRequest())
-    return fetch(`http://localhost:7000/api/contacts/`)
+    return fetch(`${baseUrl}/api/contacts/`)
       .then(response => response.json())
       .then(json =>
         dispatch(receiveContacts(json))
@@ -133,7 +134,7 @@ export function updateContact(contact) {
   return function(dispatch) {
     console.log('updating contact action: ', contact)
     dispatch(updateContactRequest())
-    return fetch(`http://localhost:7000/api/contacts/${contact.id}`, {
+    return fetch(`${baseUrl}/api/contacts/${contact.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

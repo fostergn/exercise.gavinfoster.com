@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const port = process.env.PORT || 7000
+const port = process.env.PORT || 80
+var path = require('path')
 const cassandra = require('cassandra-driver')
 const Routing = require('./routes/root')
 
@@ -16,6 +17,7 @@ app.use(function(req, res, next) {
 });
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(express.static(path.join(__dirname)))
 
 // initialize routing
 Routing(app, database)

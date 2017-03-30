@@ -6,7 +6,6 @@ import ActionGrade from 'material-ui/svg-icons/action/grade'
 import Divider from 'material-ui/Divider'
 import Avatar from 'material-ui/Avatar'
 import {pinkA200, transparent} from 'material-ui/styles/colors'
-// import contacts from '../../../test-contacts'
 import SubList from './SubList'
 import { alphabetizeArray } from '../../utils.js'
 
@@ -22,7 +21,6 @@ const ContactList = ({searchText, contacts}) => {
 
   const alphabetizedContacts = alphabetizeArray(contacts)
   const alphabetizedList = []
-
   let SubListElements = [];
 
   // compare search term to all contacts first and last name

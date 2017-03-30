@@ -29,7 +29,7 @@ const Single = ({params, toggleEdit, contacts}) => {
           secondaryText="First Name"
         >
           <TextField 
-            onClick={() => toggleEdit()} 
+            onClick={() => handleClick('first-name-input')} 
             underlineFocusStyle={{borderColor:'rgba(0,0,0,0)'}}
             hintText="First Name" 
             value={singleContact.firstName} />
@@ -40,7 +40,7 @@ const Single = ({params, toggleEdit, contacts}) => {
         >
           <TextField
             underlineFocusStyle={{borderColor:'rgba(0,0,0,0)'}}
-            onClick={() => toggleEdit()} 
+            onClick={() => handleClick('last-name-input')} 
             hintText="Last Name" 
             value={singleContact.lastName} />
         </ListItem>
@@ -67,7 +67,7 @@ const Single = ({params, toggleEdit, contacts}) => {
         >
           <TextField 
             underlineFocusStyle={{borderColor:'rgba(0,0,0,0)'}}
-            onClick={() => toggleEdit()} 
+            onClick={() => handleClick('email-input')} 
             hintText="Email" 
             value={singleContact.email} />
         </ListItem>
