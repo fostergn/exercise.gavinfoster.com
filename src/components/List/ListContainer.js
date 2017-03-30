@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
-import { toggleSearch } from '../../actions/actions';
-import List from './List';
+import { fetchContacts } from '../../actions/actions';
+import List from './ListWrapper';
 
 const mapStateToProps = (state) => {
   return {
     searchText: state.searchText,
+    contactsFetched: state.contactsFetched,
+    contacts: state.contacts,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleSearch: () => {
-      dispatch(toggleSearch());
+    fetchContacts: () => {
+      dispatch(fetchContacts());
     },
   };
 };

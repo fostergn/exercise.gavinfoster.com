@@ -41,7 +41,7 @@ const Single = ({params}) => {
           rightIcon={<CommunicationChatBubble />}
           secondaryText="Primary"
         >
-          <TextField  id="phone-input" hintText="Primary Phone" defaultValue={intToPhone(singleContact.phoneNumber)} />
+          <TextField  id="phone-input" hintText="Primary Phone" defaultValue={intToPhone(singleContact.phone)} />
         </ListItem>
       </List>
       <Divider inset={true} />

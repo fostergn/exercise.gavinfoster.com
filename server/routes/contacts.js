@@ -16,15 +16,18 @@ module.exports = function contactsRouter(database) {
 
   // insert new contact
   router.post('/', (req, res) => {
+    const id = Uuid.random()
     const { firstName, lastName, email, phone } = req.body
-    const insertStatementValues = `${Uuid.random()}, '${firstName}', '${lastName}', '${email}', '${phone}'`;
+    const insertStatementValues = `${id}, '${firstName}', '${lastName}', '${email}', '${phone}'`;
     const insertStatement = `
       INSERT INTO argo_exercise.contacts 
-        (id, first_name, last_name, email, phone_number) 
+        (id, "firstName", "lastName", email, phone) 
       VALUES (${insertStatementValues});`
       
     database.execute(insertStatement, (err, result) => {
-      if(!err) { res.json(result)} 
+      if(!err) { res.json(
+        { id, firstName, lastName, email, phone }
+      )} 
       else { 
           res.json(err);
       }
@@ -39,10 +42,10 @@ module.exports = function contactsRouter(database) {
     const updateStatement = `
       UPDATE argo_exercise.contacts
         SET 
-          first_name = '${firstName}',
-          last_name = '${lastName}',
+          "firstName" = '${firstName}',
+          "lastName" = '${lastName}',
           email = '${email}',
-          phone_number = '${phone}'
+          phone = '${phone}'
         WHERE id = ${id};`
 
     database.execute(updateStatement, (err, result) => {

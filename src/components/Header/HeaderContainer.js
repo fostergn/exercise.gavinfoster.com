@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleSearch, toggleEdit, updateSearch } from '../../actions/actions';
+import { toggleSearch, toggleEdit, updateSearch, addContact } from '../../actions/actions';
 import Header from './Header';
 
 const mapStateToProps = (state) => {
@@ -7,6 +7,7 @@ const mapStateToProps = (state) => {
     isSearching: state.isSearching,
     searchText: state.searchText,
     isEditing: state.isEditing,
+    contacts: state.contacts,
   };
 };
 
@@ -20,6 +21,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateSearch : (text) => {
       dispatch(updateSearch(text));
+    },
+    addContact : (contact) => {
+      dispatch(addContact(contact));
     }
   };
 };

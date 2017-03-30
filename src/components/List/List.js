@@ -6,11 +6,11 @@ import ActionGrade from 'material-ui/svg-icons/action/grade'
 import Divider from 'material-ui/Divider'
 import Avatar from 'material-ui/Avatar'
 import {pinkA200, transparent} from 'material-ui/styles/colors'
-import contacts from '../../../test-contacts'
+// import contacts from '../../../test-contacts'
 import SubList from './SubList'
 import { alphabetizeArray } from '../../utils.js'
 
-const ContactList = ({searchText}) => {
+const ContactList = ({searchText, contacts}) => {
 
   const addNavigate = () => {
     browserHistory.push('/add')
@@ -33,7 +33,7 @@ const ContactList = ({searchText}) => {
   // } else {
     for (var key in alphabetizedContacts) {
       if (alphabetizedContacts.hasOwnProperty(key)) {
-        SubListElements.push(<SubList letter={key} contacts={alphabetizedContacts[key]} searchText={searchText} />)
+        SubListElements.push(<SubList key={key} letter={key} contacts={alphabetizedContacts[key]} searchText={searchText} />)
       }
     }
   // }

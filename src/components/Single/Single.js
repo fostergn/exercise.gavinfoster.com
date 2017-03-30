@@ -1,5 +1,5 @@
 import React from 'react'
-import contacts from '../../../test-contacts'
+// import contacts from '../../../test-contacts'
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import CommunicationCall from 'material-ui/svg-icons/communication/call'
@@ -10,9 +10,14 @@ import CommunicationEmail from 'material-ui/svg-icons/communication/email'
 import { intToPhone } from '../../utils'
 import TextField from 'material-ui/TextField'
 
-const Single = ({params, toggleEdit}) => {
+const Single = ({params, toggleEdit, contacts}) => {
   const singleId = params.id
-  const singleContact = contacts.find(contact => contact.id === parseInt(singleId))
+
+  console.log('contacts: ', contacts)
+  console.log('single id: ', singleId)
+  const singleContact = contacts.find(contact => contact.id === singleId)
+
+  console.log(' sing le contact: ', singleContact)
 
   return (
     <div>
@@ -39,7 +44,7 @@ const Single = ({params, toggleEdit}) => {
           secondaryText="Primary"
           onClick={() => toggleEdit()}
         >
-          <TextField hintText="Primary Phone" value={intToPhone(singleContact.phoneNumber)} />
+          <TextField hintText="Primary Phone" value={intToPhone(singleContact.phone)} />
         </ListItem>
       </List>
       <Divider inset={true} />

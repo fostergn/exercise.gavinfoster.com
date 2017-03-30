@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import AppBar from 'material-ui/AppBar';
 import { browserHistory } from 'react-router'
 import TextField from 'material-ui/TextField'
-import contacts from '../../../test-contacts'
+// import contacts from '../../../test-contacts'
 import RightIcon from './RightIcon'
 
-const Header = ({ toggleSearch, location, isSearching, updateSearch, searchText, isEditing, toggleEdit }) =>  {
+const Header = ({ contacts, toggleSearch, location, isSearching, updateSearch, searchText, isEditing, toggleEdit, addContact }) =>  {
 
   const isSingle = location.pathname.includes('/contacts/')
   const isAdd = location.pathname.includes('/add')
@@ -21,7 +21,7 @@ const Header = ({ toggleSearch, location, isSearching, updateSearch, searchText,
   const cancelAndSave = <div><i className="material-icons">cancel</i><i style={{paddingLeft:20}} onClick={() => saveEdits()} className="material-icons">save</i></div>
   const textField = <TextField hintText="Search Contacts" value={searchText} inputStyle={{color:'#fff'}} onChange={e => updateSearch(e.target.value)} />
 
-  const title = isSingle ? `${singleContact.firstName} ${singleContact.lastName}` : (isSearching ? textField : ( isAdd ? 'Add Contact' : 'Contacts'))
+  const title = isSingle && (typeof singleContact !== 'undefined') ? `${singleContact.firstName} ${singleContact.lastName}` : (isSearching ? textField : ( isAdd ? 'Add Contact' : 'Contacts'))
   const leftIcon = (isSingle || isAdd || isSearching)  ? arrowBackIcon : hiddenIcon
   const rightIcon = (isSearching || isAdd) ? hiddenIcon : isSingle ? (isEditing ? cancelAndSave : pencilIcon) : searchIcon
 
@@ -45,7 +45,7 @@ const Header = ({ toggleSearch, location, isSearching, updateSearch, searchText,
   return (
     <AppBar 
       iconElementLeft={leftIcon}
-      iconElementRight={<RightIcon location={location} toggleEdit={toggleEdit} saveEdits={saveEdits} isSearching={isSearching} isEditing={isEditing} />}
+      iconElementRight={<RightIcon location={location} addContact={addContact} toggleEdit={toggleEdit} saveEdits={saveEdits} isSearching={isSearching} isEditing={isEditing} />}
       onLeftIconButtonTouchTap={() => leftIconTouch()}
       iconStyleLeft={{color:'#fff', marginTop:0, marginLeft:0, marginBottom:0, marginRight:20, display: 'flex', alignItems: 'center'}} 
       iconStyleRight={{color:'#fff', margin:0, display: 'flex', alignItems: 'center'}} 

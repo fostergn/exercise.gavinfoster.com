@@ -16,7 +16,7 @@ const SubList = ( { letter, contacts, index, searchText }) => {
       if (fullName.includes(searchText.toLowerCase())){
         if (index === 0) {
           return (
-            <div>
+            <div key={contact.id}>
               <Divider inset={true} />
               <ListItem
                 leftAvatar={
@@ -36,6 +36,7 @@ const SubList = ( { letter, contacts, index, searchText }) => {
         } else {
           return (
             <ListItem
+              key={contact.id}
               primaryText={`${contact.firstName} ${contact.lastName}`}
               insetChildren={true}
               onTouchTap={() => singleNavigate(contact.id)}

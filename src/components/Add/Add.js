@@ -10,11 +10,7 @@ import CommunicationEmail from 'material-ui/svg-icons/communication/email'
 import TextField from 'material-ui/TextField'
 import { intToPhone } from '../../utils'
 
-const SingleAdd = ({params}) => {
-
-  const saveEdits = () => {
-    console.log('save edits');
-  }
+const SingleAdd = ({params, addContact}) => {
 
   return (
     <div>
@@ -48,7 +44,7 @@ const SingleAdd = ({params}) => {
           leftIcon={<CommunicationEmail color={indigo500} />}
           secondaryText="Work"
         >
-          <TextField  id="email-input" type="email" hintText="Primary Phone" />
+          <TextField  id="email-input" type="email" hintText="Work Email" />
         </ListItem>
       </List>
     </div>

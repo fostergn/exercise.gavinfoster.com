@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
-import { toggleSearch, toggleEdit, updateSearch } from '../../actions/actions';
+import { toggleSearch, toggleEdit, updateSearch, fetchContacts } from '../../actions/actions';
 import SingleWrapper from './SingleWrapper';
 
 const mapStateToProps = (state) => {
   return {
     isEditing: state.isEditing,
+    contacts: state.contacts,
+    contactsFetched: state.contactsFetched,
   };
 };
 
@@ -12,6 +14,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     toggleEdit: () => {
       dispatch(toggleEdit());
+    },
+    fetchContacts: () => {
+      dispatch(fetchContacts());
     },
   };
 };

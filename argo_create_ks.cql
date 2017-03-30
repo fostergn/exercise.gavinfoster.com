@@ -6,8 +6,8 @@ USE argo_exercise;
 
 CREATE TABLE IF NOT EXISTS contacts (
 	id uuid PRIMARY KEY,
-	first_name text,
-	last_name text,
-	email text, 
-	phone_number text
+	"firstName" text,
+	"lastName" text,
+	"email" text, 
+	"phone" text
 );
