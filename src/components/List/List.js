@@ -25,9 +25,6 @@ const ContactList = ({searchText, contacts}) => {
 
   let SubListElements = [];
 
-  console.log('are all false?? :', Object.values(alphabetizedContacts).every(contacts => contacts.every(contact => `${contact.firstName} ${contact.lastName}`.toLowerCase().includes(searchText.toLowerCase()))))
-    console.log('are all false?? :', Object.values(alphabetizedContacts).map(contacts => contacts.every(contact => `${contact.firstName} ${contact.lastName}`.toLowerCase().includes(searchText.toLowerCase()))))
-
   // if(!Object.values(alphabetizedContacts).every(contacts => contacts.every(contact => `${contact.firstName} ${contact.lastName}`.toLowerCase().includes(searchText.toLowerCase())))){
   //   SubListElements = <p className="list__empty">Sorry, no contacts. You should add one</p>
   // } else {

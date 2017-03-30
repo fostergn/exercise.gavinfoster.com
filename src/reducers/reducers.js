@@ -31,7 +31,7 @@ const rootReducer = (state = {}, action) => {
         case RECEIVE_ADD_RESPONSE:
             return Object.assign({}, state, {
                 addingContact: false,
-                contacts: [...state.contacts, action.response]
+                contacts: [...state.contacts, action.contact]
             });  
         case GET_CONTACTS_REQUEST:
             return Object.assign({}, state, {
@@ -46,10 +46,9 @@ const rootReducer = (state = {}, action) => {
         case RECEIVE_UPDATED_CONTACT:
             const { id } = action.contact
             const index = state.contacts.findIndex(contact => contact.id === id)
-            console.log('id : ', id)
-            console.log('index: ', index)
             return Object.assign({}, state, {
                 updatingContact: false,
+                isEditing: false,
                 contacts: [
                     ...state.contacts.slice(0, index),
                     action.contact,

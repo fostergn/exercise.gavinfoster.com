@@ -1,7 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router'
 
-const RightIcon = ({location, saveEdits, isSearching, isEditing, toggleEdit, addContact}) => {
+const RightIcon = ({location, saveEdits, isSearching, isEditing, toggleEdit, toggleSearch, addContact}) => {
 
   const isSingle = location.pathname.includes('/contacts/')
   const isAdd = location.pathname.includes('/add')
@@ -19,7 +19,7 @@ const RightIcon = ({location, saveEdits, isSearching, isEditing, toggleEdit, add
   const hiddenIcon = <i className="material-icons" style={{color:'transparent'}}>arrow_back</i>
   const arrowBackIcon = <i className="material-icons">arrow_back</i>
   const moreVertIcon = <i className="material-icons">more_vert</i>
-  const searchIcon = <i className="material-icons">search</i>
+  const searchIcon = <i className="material-icons" onClick={() => toggleSearch()}>search</i>
   const pencilIcon = <i className="material-icons" onClick={() => toggleEdit()}>mode_edit</i>
   const saveIcon = <i onClick={() => handleAddContact()} style={{paddingLeft:20}} className="material-icons">save</i>
   const cancelAndSave = <div>
@@ -27,7 +27,7 @@ const RightIcon = ({location, saveEdits, isSearching, isEditing, toggleEdit, add
                           <i onClick={() => saveEdits()} style={{paddingLeft:20}} className="material-icons">save</i>
                         </div>
   
-  const rightIcon = (isSearching) ? hiddenIcon : isSingle ? (isEditing ? cancelAndSave : pencilIcon) : (isAdd ? saveIcon : searchIcon)
+  const rightIcon = (isSearching && !isSingle) ? hiddenIcon : isSingle ? (isEditing ? cancelAndSave : pencilIcon) : (isAdd ? saveIcon : searchIcon)
 
   return (
     rightIcon

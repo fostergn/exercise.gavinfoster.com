@@ -1,4 +1,6 @@
 import fetch from 'isomorphic-fetch'
+import { browserHistory } from 'react-router'
+
 
 export const TOGGLE_SEARCH = 'TOGGLE_SEARCH'
 export const TOGGLE_EDIT = 'TOGGLE_EDIT'
@@ -52,10 +54,17 @@ export function postAddRequest(contact){
   }
 }
 
-export function receiveAddResponse(response){
+export function receiveAddContact(contact){
   return {
     type: RECEIVE_ADD_RESPONSE,
-    response
+    contact
+  }
+}
+
+export function receiveAddResponse(response){
+  return function(dispatch){
+    dispatch(receiveAddContact(response))
+    browserHistory.push(`/contacts/${response.id}`)
   }
 }
 
