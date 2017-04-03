@@ -1,5 +1,4 @@
 import React from 'react'
-// import contacts from '../../../test-contacts'
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import CommunicationCall from 'material-ui/svg-icons/communication/call'

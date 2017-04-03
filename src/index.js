@@ -14,8 +14,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 // Initialize store
-const store = configureStore();
-const mountApp = document.getElementById('root');
+const store = configureStore(),
+	mountApp = document.getElementById( 'root' )
 
 ReactDOM.render(
   <Provider store={store}>
